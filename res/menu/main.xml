@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/style"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:icon="@drawable/zoom_in"
+        android:title="@string/style"/>
+    
+    <item
+        android:id="@+id/ugc_defense"
+        android:orderInCategory="1"
+        android:showAsAction="never"
+        android:title="@string/ugc_defense"/>
+
+    <item
+        android:id="@+id/ugc_cine_cite_les_halles"
+        android:orderInCategory="2"
+        android:showAsAction="never"
+        android:title="@string/ugc_cine_cite_les_halles"/>
+    
+    <item
+        android:id="@+id/ugc_lyon_bastille"
+        android:orderInCategory="3"
+        android:showAsAction="never"
+        android:title="@string/ugc_lyon_bastille"/>
+    
+</menu>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">My Cinoche</string>
+    <string name="style">A</string>
+    <string name="ugc_defense">UGC Defense</string>
+    <string name="ugc_cine_cite_les_halles">UGC Cine Cite les Halles</string>
+    <string name="ugc_lyon_bastille">UGC Lyon Bastille</string>
+    <string name="title_activity_film">Film</string>
+    <string name="action_settings">Settings</string>
+    
+
+</resources>
