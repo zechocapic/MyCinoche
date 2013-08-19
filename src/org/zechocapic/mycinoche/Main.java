@@ -12,6 +12,9 @@ public class Main extends Activity {
 	private final static int UGC_DEFENSE = 32619;
 	private final static int UGC_LES_HALLES = 158;
 	private final static int UGC_LYON_BASTILLE = 145;
+	private final static int UGC_GEORGES_V = 111;
+	private final static int ARIEL_HAUTS_DE_RUEIL = 38213;
+	private final static int ARIEL_CENTRE_VILLE = 20139;
 	
 	private int appStyle;
 	private int numeroCine;
@@ -26,6 +29,26 @@ public class Main extends Activity {
         appStyle = settings.getInt("appStyle", 1);
         
         // mise en place du layout
+    	switch (numeroCine) {
+		case UGC_DEFENSE:
+	        setTitle("UGC Defense");
+	        break;
+		case UGC_LES_HALLES:
+	        setTitle("UGC Cine-Cite Les Halles");
+	        break;
+		case UGC_LYON_BASTILLE:
+	        setTitle("UGC Lyon Bastille");
+	        break;
+		case UGC_GEORGES_V:
+	        setTitle("UGC Georges V");
+	        break;
+		case ARIEL_HAUTS_DE_RUEIL:
+	        setTitle("ARIEL Hauts-de-Rueil");
+	        break;
+		case ARIEL_CENTRE_VILLE:
+	        setTitle("ARIEL Centre-Ville");
+	        break;
+		}
         setContentView(R.layout.activity_main);
         
         // recuperation de la liste des seances
@@ -44,14 +67,32 @@ public class Main extends Activity {
     	switch (item.getItemId()) {
 		case R.id.ugc_defense:
 			numeroCine = UGC_DEFENSE;
+	        setTitle("UGC Defense");
 	        new RecupSeanceAsyncTask(appStyle, this).execute("http://www.premiere.fr/horaire/cine/" + numeroCine);
 	        return true;
 		case R.id.ugc_cine_cite_les_halles:
+	        setTitle("UGC Les Halles");
 			numeroCine = UGC_LES_HALLES;
 	        new RecupSeanceAsyncTask(appStyle, this).execute("http://www.premiere.fr/horaire/cine/" + numeroCine);
 	        return true;
 		case R.id.ugc_lyon_bastille:
+	        setTitle("UGC Lyon Bastille");
 			numeroCine = UGC_LYON_BASTILLE;
+	        new RecupSeanceAsyncTask(appStyle, this).execute("http://www.premiere.fr/horaire/cine/" + numeroCine);
+	        return true;
+		case R.id.ugc_georges_v:
+	        setTitle("UGC Georges V");
+			numeroCine = UGC_GEORGES_V;
+	        new RecupSeanceAsyncTask(appStyle, this).execute("http://www.premiere.fr/horaire/cine/" + numeroCine);
+	        return true;
+		case R.id.ariel_hauts_rueil:
+	        setTitle("ARIEL Hauts-de-Rueil");
+			numeroCine = ARIEL_HAUTS_DE_RUEIL;
+	        new RecupSeanceAsyncTask(appStyle, this).execute("http://www.premiere.fr/horaire/cine/" + numeroCine);
+	        return true;
+		case R.id.ariel_centre_ville:
+	        setTitle("ARIEL Centre-Ville");
+			numeroCine = ARIEL_CENTRE_VILLE;
 	        new RecupSeanceAsyncTask(appStyle, this).execute("http://www.premiere.fr/horaire/cine/" + numeroCine);
 	        return true;
 		case R.id.style:

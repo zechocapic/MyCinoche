@@ -6,6 +6,9 @@
     <string name="ugc_defense">UGC Defense</string>
     <string name="ugc_cine_cite_les_halles">UGC Cine Cite les Halles</string>
     <string name="ugc_lyon_bastille">UGC Lyon Bastille</string>
+    <string name="ugc_georges_v">UGC Georges V</string>
+    <string name="ariel_hauts_rueil">ARIEL Hauts de Rueil</string>
+    <string name="ariel_centre_ville">ARIEL Centre Ville</string>
     <string name="title_activity_film">Film</string>
     <string name="action_settings">Settings</string>
     

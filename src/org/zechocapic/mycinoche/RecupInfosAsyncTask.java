@@ -64,8 +64,8 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         	titleTextColor = Color.WHITE;
         	otherTextColor = Color.BLACK;
         } else {
-        	titleTextSize = 40;
-        	simpleTextSize = 32;
+        	titleTextSize = 32;
+        	simpleTextSize = 24;
         	titleBackgroundColor = Color.BLACK;
         	subtitleBackgroundColor = Color.rgb(32, 32, 32);
         	simpleBackgroundColor = Color.rgb(64, 64, 64);

@@ -4,7 +4,7 @@
         android:id="@+id/style"
         android:orderInCategory="100"
         android:showAsAction="always"
-        android:icon="@drawable/zoom_in"
+        android:icon="@drawable/zoomin_v2"
         android:title="@string/style"/>
     
 </menu>

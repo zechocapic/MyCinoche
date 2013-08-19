@@ -76,10 +76,10 @@ public class RecupSeanceAsyncTask extends AsyncTask<String, Void, Document> {
         	titleTextColor = Color.WHITE;
         	otherTextColor = Color.BLACK;
         } else {
-        	titleTextSize = 40;
-        	versionTextSize = 32;
-        	horaireTextSize = 32;
-        	noteTextSize = 32;
+        	titleTextSize = 32;
+        	versionTextSize = 24;
+        	horaireTextSize = 24;
+        	noteTextSize = 24;
         	titleBackgroundColor = Color.BLACK;
         	subtitleBackgroundColor = Color.rgb(32, 32, 32);
         	simpleBackgroundColor = Color.rgb(64, 64, 64);

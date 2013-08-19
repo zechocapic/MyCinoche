@@ -4,7 +4,7 @@
         android:id="@+id/style"
         android:orderInCategory="100"
         android:showAsAction="always"
-        android:icon="@drawable/zoom_in"
+        android:icon="@drawable/zoomin_v2"
         android:title="@string/style"/>
     
     <item
@@ -25,4 +25,22 @@
         android:showAsAction="never"
         android:title="@string/ugc_lyon_bastille"/>
     
+    <item
+        android:id="@+id/ugc_georges_v"
+        android:orderInCategory="4"
+        android:showAsAction="never"
+        android:title="@string/ugc_georges_v"/>
+    
+    <item
+        android:id="@+id/ariel_hauts_rueil"
+        android:orderInCategory="5"
+        android:showAsAction="never"
+        android:title="@string/ariel_hauts_rueil"/>
+
+    <item
+        android:id="@+id/ariel_centre_ville"
+        android:orderInCategory="6"
+        android:showAsAction="never"
+        android:title="@string/ariel_centre_ville"/>
+
 </menu>
