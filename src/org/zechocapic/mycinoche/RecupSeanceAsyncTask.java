@@ -26,7 +26,7 @@ public class RecupSeanceAsyncTask extends AsyncTask<String, Void, Document> {
 	private int appStyle;
 	private Context context;
 	private ProgressDialog progressDialog;
-	private TextView.OnClickListener onClickListener = new TextView.OnClickListener() {
+	private LinearLayout.OnClickListener onClickListener = new LinearLayout.OnClickListener() {
 		public void onClick(View v) {
 			String url = (String) v.getTag();
 			Intent intent = new Intent(context, Film.class);
@@ -111,18 +111,17 @@ public class RecupSeanceAsyncTask extends AsyncTask<String, Void, Document> {
 			LinearLayout layoutBloc = new LinearLayout(context);
 			layoutBloc.setOrientation(LinearLayout.VERTICAL);
 			layoutBloc.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+			layoutBloc.setOnClickListener(onClickListener);
+			layoutBloc.setTag(bloc.select("div.titre").first().select("a[href]").first().attr("href"));
 			
 			// Titre du film
 			Element titre = bloc.select("div.titre").first(); 
-            Element titreURL = titre.select("a[href]").first();
             TextView twTitre = new TextView(context);
             twTitre.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
             twTitre.setTextSize(titleTextSize);
             twTitre.setTypeface(null, Typeface.BOLD);
             twTitre.setBackgroundColor(titleBackgroundColor);
             twTitre.setTextColor(titleTextColor);
-            twTitre.setOnClickListener(onClickListener);
-            twTitre.setTag(titreURL.attr("href"));
             twTitre.setText(titre.text());
             layoutBloc.addView(twTitre);
 			

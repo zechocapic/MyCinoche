@@ -130,9 +130,9 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         twInfosDiverses.setTextColor(simpleTextColor);
         twInfosDiverses.setText("Genre : " + genre.text() + "\n" +
         		"Date de sortie : " + dateSortie.text() + "\n" +
+        		"Durée : " + duree.text() + "\n" +
         		"Réalisateur : " + realisateur.text() + "\n" +
-        		"Acteurs : " + acteur.text().replace("Avec :", "").replace("...> Tout le casting", "") + "\n" +
-        		"Durée : " + duree.text());
+        		"Acteurs : " + acteur.text().replace("Avec :", "").replace("...> Tout le casting", ""));
         layoutAfficheInfos.addView(twInfosDiverses);
         
         linearLayout.addView(layoutAfficheInfos);
