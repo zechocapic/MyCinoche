@@ -7,6 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -20,12 +21,20 @@ import android.widget.Toast;
 public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
 	private int appStyle;
 	private Context context;
+	private ProgressDialog progressDialog;
 	
 	RecupInfosAsyncTask(int appStyle, Context context) {
 		this.appStyle = appStyle;
 		this.context = context;
 	}
 
+    @Override
+	protected void onPreExecute() {
+    	this.progressDialog = new ProgressDialog(context);
+    	this.progressDialog.setMessage("Infos du film en cours de chargement");
+    	this.progressDialog.show();
+	}
+    
     // Recuperation de la page web
 	@Override
     protected Document doInBackground(String... urls) {
@@ -43,6 +52,9 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
     // Parsing de la page web
 	@Override
     protected void onPostExecute(Document doc) {
+		// Fermeture de la fenetre de chargement
+		progressDialog.dismiss();
+		
 		// Toast pour gerer les cas ou la connexion est en carton
         if(doc == null){
         	Toast.makeText(context, "Erreur : le chargement de la page n'aboutit pas !", Toast.LENGTH_SHORT).show();;
@@ -52,7 +64,7 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         // Variables de style
         int titleTextSize, simpleTextSize;
         int titleBackgroundColor, subtitleBackgroundColor, simpleBackgroundColor;
-        int titleTextColor, otherTextColor;
+        int titleTextColor, simpleTextColor;
         
         // Definition des differents styles
         if (appStyle == 1) {
@@ -62,7 +74,7 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         	subtitleBackgroundColor = Color.rgb(192, 192, 192);
         	simpleBackgroundColor = Color.WHITE;
         	titleTextColor = Color.WHITE;
-        	otherTextColor = Color.BLACK;
+        	simpleTextColor = Color.BLACK;
         } else {
         	titleTextSize = 32;
         	simpleTextSize = 24;
@@ -70,7 +82,7 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         	subtitleBackgroundColor = Color.rgb(32, 32, 32);
         	simpleBackgroundColor = Color.rgb(64, 64, 64);
         	titleTextColor = Color.WHITE;
-        	otherTextColor = Color.WHITE;
+        	simpleTextColor = Color.WHITE;
         }
         
 		// Bloc du film
@@ -109,7 +121,7 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         twInfosDiverses.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1f));
         twInfosDiverses.setBackgroundColor(simpleBackgroundColor);
         twInfosDiverses.setTextSize(simpleTextSize);
-        twInfosDiverses.setTextColor(otherTextColor);
+        twInfosDiverses.setTextColor(simpleTextColor);
         twInfosDiverses.setText("Genre : " + genre.text() + "\n" +
         		"Date de sortie : " + dateSortie.text() + "\n" +
         		"Réalisateur : " + realisateur.text() + "\n" +
@@ -125,7 +137,7 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
 		twCadreSynopsis.setTypeface(null, Typeface.BOLD_ITALIC);
 		twCadreSynopsis.setBackgroundColor(subtitleBackgroundColor);
 		twCadreSynopsis.setTextSize(simpleTextSize);
-		twCadreSynopsis.setTextColor(otherTextColor);
+		twCadreSynopsis.setTextColor(simpleTextColor);
 		twCadreSynopsis.setText("Synopsys");
 		linearLayout.addView(twCadreSynopsis);
 		
@@ -134,7 +146,7 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         TextView twDesc = new TextView(context);
         twDesc.setBackgroundColor(simpleBackgroundColor);
         twDesc.setTextSize(simpleTextSize);
-        twDesc.setTextColor(otherTextColor);
+        twDesc.setTextColor(simpleTextColor);
         twDesc.setText(description.text());
         linearLayout.addView(twDesc);
         
