@@ -28,7 +28,7 @@
         <activity
             android:name="org.zechocapic.mycinoche.Film"
             android:label="@string/title_activity_film"
-            android:configChanges="orientation|screenSize" >
+            android:configChanges="orientation|screenSize"
             android:parentActivityName="org.zechocapic.mycinoche.Main" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

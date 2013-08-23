@@ -62,26 +62,30 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         }
         
         // Variables de style
-        int titleTextSize, simpleTextSize;
+        int titleTextSize, subtitleTextSize, simpleTextSize;
         int titleBackgroundColor, subtitleBackgroundColor, simpleBackgroundColor;
-        int titleTextColor, simpleTextColor;
+        int titleTextColor, subtitleTextColor, simpleTextColor;
         
         // Definition des differents styles
         if (appStyle == 1) {
         	titleTextSize = 20;
-        	simpleTextSize = 16;
+        	subtitleTextSize = 16;
+        	simpleTextSize = 14;
         	titleBackgroundColor = Color.rgb(47, 55, 64);
         	subtitleBackgroundColor = Color.rgb(192, 192, 192);
         	simpleBackgroundColor = Color.WHITE;
         	titleTextColor = Color.WHITE;
+        	subtitleTextColor = Color.BLACK;
         	simpleTextColor = Color.BLACK;
         } else {
         	titleTextSize = 32;
+        	subtitleTextSize = 24;
         	simpleTextSize = 24;
         	titleBackgroundColor = Color.BLACK;
         	subtitleBackgroundColor = Color.rgb(32, 32, 32);
         	simpleBackgroundColor = Color.rgb(64, 64, 64);
         	titleTextColor = Color.WHITE;
+        	subtitleTextColor = Color.WHITE;
         	simpleTextColor = Color.WHITE;
         }
         
@@ -92,6 +96,7 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         // TextView du titre
 		Element titre = doc.select("div.bloc_rub_titre").first();
         TextView twTitre = new TextView(context);
+        twTitre.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         twTitre.setBackgroundColor(titleBackgroundColor);
         twTitre.setTextSize(titleTextSize);
         twTitre.setTypeface(null, Typeface.BOLD);
@@ -99,15 +104,16 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         twTitre.setText(titre.text());
         linearLayout.addView(twTitre);
 		
-		// layout horizontal affiche et infos
+		// Layout horizontal contenant affiche et infos
         LinearLayout layoutAfficheInfos = new LinearLayout(context);            			
         layoutAfficheInfos.setOrientation(LinearLayout.HORIZONTAL);
+        layoutAfficheInfos.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         layoutAfficheInfos.setBackgroundColor(Color.BLACK);
 		
 		// ImageView affiche
 		Element affiche = doc.select("div.visuel img[src]").first();
 		ImageView imAffiche = new ImageView(context);
-		imAffiche.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 2f));
+		imAffiche.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 0f));
 		layoutAfficheInfos.addView(imAffiche);
         new RecupImageAsyncTask(imAffiche).execute(affiche.attr("src"));
         
@@ -132,16 +138,16 @@ public class RecupInfosAsyncTask extends AsyncTask<String, Void, Document> {
         linearLayout.addView(layoutAfficheInfos);
 
         
-        // Cadre Synopsys
+        // Cadre Synopsis
 		TextView twCadreSynopsis = new TextView(context);
 		twCadreSynopsis.setTypeface(null, Typeface.BOLD_ITALIC);
 		twCadreSynopsis.setBackgroundColor(subtitleBackgroundColor);
-		twCadreSynopsis.setTextSize(simpleTextSize);
-		twCadreSynopsis.setTextColor(simpleTextColor);
-		twCadreSynopsis.setText("Synopsys");
+		twCadreSynopsis.setTextSize(subtitleTextSize);
+		twCadreSynopsis.setTextColor(subtitleTextColor);
+		twCadreSynopsis.setText("Synopsis");
 		linearLayout.addView(twCadreSynopsis);
 		
-		// TextView du synopsys
+		// TextView du synopsis
 		Element description = doc.select("div.description_cnt").first();
         TextView twDesc = new TextView(context);
         twDesc.setBackgroundColor(simpleBackgroundColor);

@@ -6,8 +6,6 @@
         android:id="@+id/layout_film"
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-</LinearLayout>
+        android:layout_height="wrap_content" />
 
 </ScrollView>

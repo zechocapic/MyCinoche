@@ -34,7 +34,7 @@ public final class R {
         public static final int ariel_centre_ville=0x7f080008;
         public static final int ariel_hauts_rueil=0x7f080007;
         public static final int layout_film=0x7f080000;
-        public static final int layout_liste_films=0x7f080001;
+        public static final int layout_liste_seances=0x7f080001;
         public static final int style=0x7f080002;
         public static final int ugc_cine_cite_les_halles=0x7f080004;
         public static final int ugc_defense=0x7f080003;
